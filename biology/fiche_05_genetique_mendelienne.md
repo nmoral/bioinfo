@@ -160,7 +160,7 @@ Aa : Fleur violette (heterozygote)
 - Influence par l'environnement aussi
 - Peut etre identique pour genotypes differents
 
-### Relation Genotype â†' Phenotype
+### Relation Genotype → Phenotype
 
 **Tableau de correspondance** (exemple : couleur de fleur)
 
@@ -171,7 +171,7 @@ Aa : Fleur violette (heterozygote)
 | **aa** | Homozygote recessif | Blanc |
 
 **Observation cle**
-- AA et Aa â†' **meme phenotype** (violet)
+- AA et Aa → **meme phenotype** (violet)
 - Mais **genotypes differents**
 - Impossible de distinguer AA de Aa par simple observation
 - Necessite de croiser avec aa pour determiner
@@ -196,24 +196,24 @@ Aa : Fleur violette (heterozygote)
 
 **3. Reunion lors de la fecondation**
 - Gamete du pere (1 allele) + Gamete de la mere (1 allele)
-- â†' Descendant (2 alleles)
+- → Descendant (2 alleles)
 
 ### Illustration
 
 ```
 Parent 1 (Aa) :  A | a
-                  â†"   â†"
+                  ↓   ↓
               Gametes : 50% A, 50% a
 
 Parent 2 (Aa) :  A | a
-                  â†"   â†"
+                  ↓   ↓
               Gametes : 50% A, 50% a
 
 Fecondation :
-   A (parent 1) + A (parent 2) â†' AA (25%)
-   A (parent 1) + a (parent 2) â†' Aa (25%)
-   a (parent 1) + A (parent 2) â†' Aa (25%)
-   a (parent 1) + a (parent 2) â†' aa (25%)
+   A (parent 1) + A (parent 2) → AA (25%)
+   A (parent 1) + a (parent 2) → Aa (25%)
+   a (parent 1) + A (parent 2) → Aa (25%)
+   a (parent 1) + a (parent 2) → aa (25%)
 ```
 
 ---
@@ -320,8 +320,8 @@ Phenotype : 50% dominant, 50% recessif
 
 **Utilite du test cross**
 - Permet de determiner le genotype d'un individu dominant
-- Si descendance = 100% dominant â†' parent est AA
-- Si descendance = 50/50 â†' parent est Aa
+- Si descendance = 100% dominant → parent est AA
+- Si descendance = 50/50 → parent est Aa
 
 ---
 
@@ -629,12 +629,12 @@ Le pois violet doit etre **Aa** (heterozygote).
 
 Si c'etait AA :
 ```
-AA x aa â†' 100% Aa (tous violets)
+AA x aa → 100% Aa (tous violets)
 ```
 
 Comme on obtient 50/50, c'est :
 ```
-Aa x aa â†' 50% Aa (violet), 50% aa (blanc)
+Aa x aa → 50% Aa (violet), 50% aa (blanc)
 ```
 </details>
 
@@ -660,8 +660,8 @@ Quelle proportion de descendants sera vert-lisse (y_R_) ?
 
 Methode des probabilites independantes :
 
-Vert (yy) : Yy x Yy â†' 1/4 yy
-Lisse (R_) : Rr x Rr â†' 3/4 (RR ou Rr)
+Vert (yy) : Yy x Yy → 1/4 yy
+Lisse (R_) : Rr x Rr → 3/4 (RR ou Rr)
 
 Vert ET lisse : 1/4 × 3/4 = 3/16
 
@@ -781,7 +781,7 @@ Croisement AO x AO :
 
 ---
 
-**Prochaine fiche** : Code genetique et traduction (ARN â†' Proteine)
+**Prochaine fiche** : Code genetique et traduction (ARN → Proteine)
 
 ---
 

@@ -362,27 +362,21 @@ Distance normalisee = 1/8 = 0.125 (12.5% de differences)
 
 ## Exercices pratiques
 
+## Exercices pratiques
+
 ### Exercice 1 : Distance de Hamming simple
 Calculer la distance de Hamming entre :
 - Seq1 : ATCGATCG
 - Seq2 : ATCTATCG
 
-<details>
-<summary>Solution</summary>
-Position 4 : G vs T → 1 difference
-Distance de Hamming = 1
-</details>
+**Indice** : Compare position par position. Combien de positions different ?
 
 ### Exercice 2 : Distance de Hamming multiple
 Calculer la distance de Hamming entre :
 - Seq1 : GAGCCTACTAACGGGAT
 - Seq2 : CATCGTAATGACGGCCT
 
-<details>
-<summary>Solution</summary>
-Differences aux positions : 1, 3, 6, 10, 15, 16, 17
-Distance de Hamming = 7
-</details>
+**Indice** : Parcours les deux sequences en parallele et compte les differences.
 
 ### Exercice 3 : Parcimonie
 Trois especes avec sequences :
@@ -392,24 +386,137 @@ Trois especes avec sequences :
 
 Lesquelles sont les plus proches evolutivement ?
 
-<details>
-<summary>Solution</summary>
-A et B : 0 difference
-A et C : 1 difference
-B et C : 1 difference
-→ A et B sont les plus proches (sequences identiques)
-</details>
+**Indice** : Calcule la distance entre chaque paire. La plus petite distance indique la plus grande proximite.
 
 ### Exercice 4 : Type de mutation
 Une mutation change GAA en GUA dans un gene.
 Quel type de mutation ?
 
-<details>
-<summary>Solution</summary>
-GAA code pour Glutamate (Glu)
-GUA code pour Valine (Val)
-→ Mutation faux-sens (missense) car change l'acide amine
-</details>
+**Indice** : Utilise le code genetique. GAA et GUA codent-ils pour le meme acide amine ?
+
+### Cas de tests (avec reponses attendues)
+
+**Test 1 - Distance simple** :
+- Input : Seq1 = "ATCGATCG", Seq2 = "ATCTATCG"
+- Output attendu : 1
+
+**Test 2 - Distance multiple** :
+- Input : Seq1 = "GAGCCTACTAACGGGAT", Seq2 = "CATCGTAATGACGGCCT"
+- Output attendu : 7
+
+**Test 3 - Sequences identiques** :
+- Input : Seq1 = "ATCG", Seq2 = "ATCG"
+- Output attendu : 0
+
+**Test 4 - Toutes differentes** :
+- Input : Seq1 = "AAAA", Seq2 = "TTTT"
+- Output attendu : 4
+
+**Test 5 - Distance normalisee** :
+- Input : Seq1 = "ATCGATCG" (longueur 8), Seq2 = "ATCTATCG"
+- Output attendu : Distance = 1, Distance normalisee = 0.125
+
+---
+
+## Pour aller plus loin
+
+### Lectures recommandees
+
+**Livres** :
+- "The Selfish Gene" (Dawkins) - Evolution au niveau moleculaire
+- "Evolution" (Futuyma & Kirkpatrick) - Manuel de reference
+- "The Origin of Species" (Darwin) - Classique fondateur
+- "Molecular Evolution" (Page & Holmes) - Approche mathematique
+
+**Articles scientifiques** :
+- Kimura (1968) : Theorie neutraliste de l'evolution moleculaire
+- Zuckerkandl & Pauling (1965) : "Molecules as documents of evolutionary history"
+- Nei & Kumar (2000) : "Molecular Evolution and Phylogenetics"
+
+### Ressources en ligne
+
+**Cours et videos** :
+- Khan Academy : "Evolution and natural selection"
+- MIT OpenCourseWare : 7.03 Genetics
+- Coursera : "Evolution: A Course for Educators"
+- HHMI BioInteractive : "Evolution Lab"
+
+**Outils en ligne** :
+- NCBI BLAST : Comparer sequences et trouver homologues
+- Phylogeny.fr : Construire arbres phylogenetiques
+- TimeTree : Explorer divergences evolutives
+- FlyBase / WormBase : Bases de donnees genetiques avec information evolutive
+
+**Tutoriels bio-informatique** :
+- Rosalind.info : Probleme HAMM (Counting Point Mutations)
+- BioPython Phylo module : Construction d'arbres
+- MEGA Software Tutorial : Phylogenie moleculaire
+
+### Exercices pratiques
+
+**Exercice bio-informatique 1 : Implementer Hamming** :
+Ecris une fonction Python pour calculer la distance de Hamming.
+```python
+def hamming_distance(seq1, seq2):
+    # A implementer
+    # Verifie d'abord que len(seq1) == len(seq2)
+    pass
+
+# Tests
+print(hamming_distance("ATCG", "TTCG"))  # Devrait afficher 1
+print(hamming_distance("AAAA", "TTTT"))  # Devrait afficher 4
+```
+
+**Exercice bio-informatique 2 : Distance normalisee** :
+Ajoute le calcul de la distance normalisee (en pourcentage).
+```python
+def hamming_normalized(seq1, seq2):
+    # A implementer
+    pass
+
+# Test
+print(hamming_normalized("ATCG", "TTCG"))  # Devrait afficher 0.25 (25%)
+```
+
+**Exercice bio-informatique 3 : Matrice de distances** :
+Calcule une matrice de distances entre plusieurs sequences.
+```python
+sequences = ["ATCG", "ATCG", "TTCG", "ATCC"]
+# Genere une matrice 4x4 avec toutes les distances
+```
+
+**Exercice theorique 4 : Parcimonie** :
+Soit trois sequences :
+- A : ATCGATCG
+- B : ATCGATCG
+- C : TTCGATCG
+
+Dessine un arbre phylogenetique simple montrant leurs relations evolutives.
+
+**Indice** : Calcule d'abord toutes les distances deux a deux.
+
+**Exercice pratique 5 : Types de mutations** :
+Pour chaque mutation, determine si elle est silencieuse, faux-sens ou non-sens :
+- AAA -> AAG (code pour Lysine dans les deux cas)
+- UUU -> UUA (Phe -> Leu)
+- UAC -> UAA (Tyr -> Stop)
+
+**Indice** : Tu auras besoin du tableau du code genetique !
+
+**Exercice Rosalind 6** :
+Resous le probleme "Counting Point Mutations" (HAMM) sur Rosalind.info
+
+**Exercice avance 7 : Transition vs Transversion** :
+Ecris un programme qui compte separement les transitions (purine<->purine, pyrimidine<->pyrimidine) et transversions (purine<->pyrimidine) entre deux sequences.
+
+**Exercice avance 8 : Consensus** :
+Etant donne plusieurs sequences alignees, trouve la sequence consensus (base la plus frequente a chaque position).
+```
+Seq1: ATCG
+Seq2: ATCG
+Seq3: TTCG
+Consensus: ?TCG (A ou T en position 1)
+```
 
 ---
 

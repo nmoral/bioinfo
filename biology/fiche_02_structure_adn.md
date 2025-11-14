@@ -313,39 +313,128 @@ Ces concepts sont **fondamentaux** pour comprendre :
 ### Exercice 1 : Complement
 Donner le brin complementaire de : 5' - ATCGATCG - 3'
 
-<details>
-<summary>Solution</summary>
-3' - TAGCTAGC - 5'
-</details>
+**Indice** : Rappelle-toi les regles d'appariement : A avec T, C avec G. N'oublie pas que les brins sont antiparalleles !
 
 ### Exercice 2 : Complement reverse
 Donner le complement reverse de : 5' - ATCG - 3'
 
-<details>
-<summary>Solution</summary>
-Complement : 3' - TAGC - 5'
-Complement reverse : 5' - CGAT - 3'
-</details>
+**Indice** : Deux etapes : 1) Trouve le complement, 2) Inverse l'ordre ET la direction.
 
 ### Exercice 3 : Comptage de paires
 Combien de paires de bases dans : 5' - ATCGATCGTAGC - 3' ?
 
-<details>
-<summary>Solution</summary>
-12 paires de bases (12 bp)
-</details>
+**Indice** : Chaque nucleotide d'un brin forme une paire avec le brin complementaire. Compte simplement le nombre de lettres.
 
 ### Exercice 4 : Liaisons hydrogene
 Combien de liaisons hydrogene dans : 5' - ATCG - 3' ?
 
-<details>
-<summary>Solution</summary>
-- A-T : 2 liaisons
-- T-A : 2 liaisons
-- C-G : 3 liaisons
-- G-C : 3 liaisons
-Total : 2 + 2 + 3 + 3 = 10 liaisons
-</details>
+**Indice** : A-T forme 2 liaisons, C-G forme 3 liaisons. Additionne pour chaque paire.
+
+### Cas de tests (avec reponses attendues)
+
+**Test 1** :
+- Input : Sequence ADN : 5' - ATCG - 3'
+- Output attendu (complement) : 3' - TAGC - 5'
+
+**Test 2** :
+- Input : Sequence ADN : 5' - ATCG - 3'
+- Output attendu (complement reverse) : 5' - CGAT - 3'
+
+**Test 3** :
+- Input : Sequence ADN : 5' - ATCGATCGTAGC - 3'
+- Output attendu (nombre de bp) : 12
+
+**Test 4** :
+- Input : Sequence ADN : 5' - ATCG - 3'
+- Output attendu (liaisons H) : 10 (2+2+3+3)
+
+---
+
+## Pour aller plus loin
+
+### Lectures recommandees
+
+**Livres** :
+- "DNA: The Secret of Life" (Watson & Berry) - Histoire de la decouverte
+- "The Double Helix" (Watson) - Recit personnel de la decouverte
+- "Rosalind Franklin: The Dark Lady of DNA" (Maddox) - Biographie
+
+**Articles scientifiques** :
+- Watson & Crick (1953) : "A Structure for Deoxyribose Nucleic Acid" - Paper original, Nature
+- Franklin & Gosling (1953) : "Molecular Configuration in Sodium Thymonucleate" - Photo 51
+- Chargaff (1950) : Regles d'appariement des bases
+
+### Ressources en ligne
+
+**Cours et videos** :
+- Khan Academy : "DNA structure and replication"
+- MIT OpenCourseWare : 7.01SC Fundamentals of Biology
+- DNA Learning Center (Cold Spring Harbor) : Animations interactives
+- HHMI BioInteractive : "DNA Structure"
+
+**Outils interactifs** :
+- Molecule viewer (PDB) : Visualiser la structure 3D de l'ADN
+- DNA Structure Calculator : Calculer proprietes physiques
+- Complement Sequence Tool : Pratiquer complement et reverse complement
+
+**Documentation bio-informatique** :
+- BioPython Seq module : Manipulation de sequences
+- Biopython Tutorial : Chapitre sur sequences
+- Rosalind.info : Problemes DNA, REVC
+
+### Exercices pratiques
+
+**Exercice bio-informatique 1 : Implementer complement** :
+Ecris une fonction Python qui prend une sequence ADN et retourne son complement.
+```python
+def complement(dna):
+    # A implementer
+    pass
+
+# Test
+print(complement("ATCG"))  # Devrait afficher "TAGC"
+```
+
+**Exercice bio-informatique 2 : Implementer reverse complement** :
+Ecris une fonction qui retourne le complement reverse.
+```python
+def reverse_complement(dna):
+    # A implementer
+    pass
+
+# Test
+print(reverse_complement("ATCG"))  # Devrait afficher "CGAT"
+```
+
+**Exercice bio-informatique 3 : Contenu GC** :
+Ecris une fonction qui calcule le pourcentage de G et C dans une sequence.
+```python
+def gc_content(dna):
+    # A implementer
+    pass
+
+# Test
+print(gc_content("ATCG"))  # Devrait afficher 50.0
+```
+
+**Exercice theorique 4 : Stabilite** :
+Compare la stabilite des sequences suivantes et explique pourquoi :
+- Sequence A : ATATATAT (50% GC)
+- Sequence B : GCGCGCGC (100% GC)
+
+**Indice** : Pense aux liaisons hydrogene !
+
+**Exercice pratique 5 : Rosalind** :
+Resous les problemes suivants sur Rosalind.info :
+1. DNA : Counting DNA Nucleotides
+2. REVC : Complementing a Strand of DNA
+3. GC : Computing GC Content
+
+**Exercice avance 6 : Palindromes** :
+Trouve tous les palindromes (sequences identiques a leur complement reverse) de longueur 4 dans :
+5' - ATCGATCGATCG - 3'
+
+**Indice** : Un palindrome ADN lit la meme chose dans les deux sens sur les deux brins.
 
 ---
 

@@ -151,10 +151,10 @@ Processus de creation d'un brin d'ARN messager a partir d'un brin d'ADN
 
 ```
 Brin template ADN → ARN transcrit
-      A          →       U
-      T          →       A
-      G          →       C
-      C          →       G
+ A          →       U
+ T          →       A
+ G          →       C
+ C          →       G
 ```
 
 ### Exemple de transcription
@@ -394,42 +394,150 @@ Transcrire le brin template suivant en ARN :
 ADN template : 3' - TACGATCG - 5'
 ```
 
-<details>
-<summary>Solution</summary>
-ARN : 5' - AUGCUAGC - 3'
-(T→A, A→U, C→G, G→C, etc.)
-</details>
+**Indice** : L'ARN polymerase lit 3'->5' et synthetise 5'->3'. Remplace T par U.
 
 ### Exercice 2 : Identification brin codant
 Soit l'ARN : 5' - AUGCUAGC - 3'
 Quel est le brin codant de l'ADN ?
 
-<details>
-<summary>Solution</summary>
-Brin codant : 5' - ATGCTAGC - 3'
-(Meme sequence que l'ARN, sauf U→T)
-</details>
+**Indice** : Le brin codant a la meme sequence que l'ARN, sauf U->T.
 
 ### Exercice 3 : Epissage
 Pre-mRNA : Exon1(100nt) - Intron1(500nt) - Exon2(150nt) - Intron2(300nt) - Exon3(200nt)
 Quelle est la longueur du mRNA mature ?
 
-<details>
-<summary>Solution</summary>
-mRNA mature = Exon1 + Exon2 + Exon3
-= 100 + 150 + 200 = 450 nucleotides
-(Les introns sont enleves)
-</details>
+**Indice** : Les introns sont enleves, seuls les exons restent.
 
 ### Exercice 4 : Comparaison ADN/ARN
 Sequence ADN (brin codant) : 5' - ATGCTAGCTAGC - 3'
 Quelle est la sequence du mRNA transcrit ?
 
-<details>
-<summary>Solution</summary>
-mRNA : 5' - AUGCUAGCUAGC - 3'
-(Identique au brin codant, sauf T→U)
-</details>
+**Indice** : Identique au brin codant, mais remplace T par U.
+
+### Cas de tests (avec reponses attendues)
+
+**Test 1 - Transcription simple** :
+- Input : ADN template : 3' - TACGATCG - 5'
+- Output attendu : ARN : 5' - AUGCUAGC - 3'
+
+**Test 2 - Brin codant** :
+- Input : ARN : 5' - AUGCUAGC - 3'
+- Output attendu : Brin codant : 5' - ATGCTAGC - 3'
+
+**Test 3 - Longueur apres epissage** :
+- Input : Exon1(100nt) + Intron1(500nt) + Exon2(150nt) + Intron2(300nt) + Exon3(200nt)
+- Output attendu : 450 nucleotides (100+150+200)
+
+**Test 4 - Conversion ADN->ARN** :
+- Input : ADN codant : 5' - ATGCTAGCTAGC - 3'
+- Output attendu : mRNA : 5' - AUGCUAGCUAGC - 3'
+
+**Test 5 - Bases differentes** :
+- Input : Sequence ADN : "ATCG"
+- Output attendu : Nombre de T dans ADN = 1, Nombre de U dans ARN = 1
+
+---
+
+## Pour aller plus loin
+
+### Lectures recommandees
+
+**Livres** :
+- "RNA Worlds" (Gesteland et al.) - Le monde de l'ARN
+- "The RNA World" (Atkins et al.) - Theorie du monde a ARN
+- "Molecular Biology" (Weaver) - Chapitres sur transcription
+- "Genes" (Lewin) - Transcription et traduction
+
+**Articles scientifiques** :
+- Crick (1970) : "Central dogma of molecular biology"
+- Gilbert (1986) : "The RNA World" - Hypothese monde a ARN
+- Sharp (1993) : "Split genes and RNA splicing" - Prix Nobel
+- Fire & Mello (1998) : "RNA interference" - Prix Nobel 2006
+
+### Ressources en ligne
+
+**Cours et videos** :
+- Khan Academy : "Transcription and mRNA processing"
+- MIT OpenCourseWare : 7.01SC - Transcription
+- iBiology : "RNA processing and splicing"
+- HHMI BioInteractive : "From DNA to RNA"
+
+**Outils en ligne** :
+- ExPASy Translate : Convertir ADN/ARN/Proteine
+- NCBI ORF Finder : Trouver cadres de lecture
+- RNAfold : Predire structure secondaire ARN
+- SpliceAid : Base de donnees sites d'epissage
+
+**Bases de donnees** :
+- RNAcentral : Base de donnees ARN non-codants
+- miRBase : Base de donnees microARN
+- Rfam : Familles d'ARN
+- ENCODE : Donnees transcriptomiques
+
+**Tutoriels bio-informatique** :
+- Rosalind.info : Probleme RNA (Transcribing DNA into RNA)
+- BioPython Seq.transcribe() : Documentation
+- RNA-seq tutorial : Analyse de donnees transcriptomiques
+
+### Exercices pratiques
+
+**Exercice bio-informatique 1 : Implementer transcription** :
+Ecris une fonction Python pour transcrire ADN en ARN.
+```python
+def transcribe(dna):
+    # A implementer
+    # Remplace tous les T par des U
+    pass
+
+# Tests
+print(transcribe("ATCG"))  # Devrait afficher "AUCG"
+print(transcribe("TACG"))  # Devrait afficher "UACG"
+```
+
+**Exercice bio-informatique 2 : Transcription inverse** :
+Ecris une fonction pour convertir ARN en ADN.
+```python
+def reverse_transcribe(rna):
+    # A implementer
+    # Remplace tous les U par des T
+    pass
+
+# Test
+print(reverse_transcribe("AUCG"))  # Devrait afficher "ATCG"
+```
+
+**Exercice bio-informatique 3 : Detecter introns** :
+Ecris une fonction qui detecte si une sequence contient des sites consensus d'epissage (GT...AG).
+```python
+def find_introns(dna):
+    # A implementer
+    # Trouve toutes les sequences qui commencent par GT et finissent par AG
+    pass
+```
+
+**Exercice theorique 4 : Types d'ARN** :
+Liste 5 differences entre mRNA, tRNA et rRNA en termes de fonction, structure et localisation.
+
+**Exercice pratique 5 : Epissage alternatif** :
+Soit un gene avec 4 exons. Combien de transcripts differents peut-on theoriquement generer par epissage alternatif ?
+
+**Indice** : Chaque exon peut etre inclus ou exclu (sauf le premier et le dernier generalement).
+
+**Exercice Rosalind 6** :
+Resous les problemes suivants sur Rosalind.info :
+1. RNA : Transcribing DNA into RNA
+2. SPLC : RNA Splicing (plus avance)
+
+**Exercice avance 7 : Structure secondaire** :
+Pour la sequence ARN : 5' - GCGCAUGCGC - 3'
+Dessine une structure secondaire possible (appariements de bases).
+
+**Indice** : L'ARN peut se replier sur lui-meme avec appariements A-U et C-G.
+
+**Exercice avance 8 : RNA-seq** :
+Si tu sequences un transcriptome et obtiens 1000 reads pour le gene A et 100 reads pour le gene B, que peux-tu en deduire ?
+
+**Indice** : Pense a l'expression genique relative.
 
 ---
 
@@ -451,7 +559,7 @@ mRNA : 5' - AUGCUAGCUAGC - 3'
 
 ## Prochaines etapes d'apprentissage
 
-1. **Traduction** : ARN → Proteine
+1. **Traduction** : ARN -> Proteine
 2. **Code genetique** : codons et acides amines
 3. **Structure des proteines** : primaire, secondaire, tertiaire
 4. **Regulation de l'expression genique**

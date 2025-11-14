@@ -52,7 +52,7 @@ Ce dossier contient 5 fiches de revision thematiques couvrant les bases de la bi
 - Appariement A-T et C-G
 - Double helice antiparallele
 - Complementarite des brins
-- Direction 5' â†' 3'
+- Direction 5' → 3'
 
 **Pour qui** :
 - Comprehension de la molecule d'ADN
@@ -95,13 +95,13 @@ Ce dossier contient 5 fiches de revision thematiques couvrant les bases de la bi
 - Differences ADN vs ARN
 - Types d'ARN : mRNA, tRNA, rRNA
 - Processus de transcription
-- Regles de correspondance (Tâ†'U)
+- Regles de correspondance (T→U)
 - Epissage et epissage alternatif
 
 **Concepts cles** :
 - Uracile remplace thymine
 - ARN simple brin
-- Transcription : ADN â†' ARN
+- Transcription : ADN → ARN
 - mRNA sort du noyau
 - Maturation chez eucaryotes
 
@@ -152,15 +152,15 @@ Ce dossier contient 5 fiches de revision thematiques couvrant les bases de la bi
 
 ### Liens entre les fiches
 ```
-Fiche 01 (Cellule) â†' ou se trouve l'ADN ?
-         â†"
-Fiche 02 (ADN) â†' quelle est sa structure ?
-         â†"
-Fiche 03 (Mutations) â†' comment change-t-il ?
-         â†"
-Fiche 04 (ARN) â†' comment est-il utilise ?
-         â†"
-Fiche 05 (Mendel) â†' comment se transmet-il ?
+Fiche 01 (Cellule) → ou se trouve l'ADN ?
+         ↓
+Fiche 02 (ADN) → quelle est sa structure ?
+         ↓
+Fiche 03 (Mutations) → comment change-t-il ?
+         ↓
+Fiche 04 (ARN) → comment est-il utilise ?
+         ↓
+Fiche 05 (Mendel) → comment se transmet-il ?
 ```
 
 ---
@@ -323,21 +323,21 @@ Fiche 05 (Mendel) â†' comment se transmet-il ?
 ## Themes couverts par les 5 fiches
 
 ### Biologie cellulaire et moleculaire
-- âœ" Structure cellulaire (Fiche 01)
-- âœ" Structure de l'ADN (Fiche 02)
-- âœ" Structure de l'ARN (Fiche 04)
+- ✓ Structure cellulaire (Fiche 01)
+- ✓ Structure de l'ADN (Fiche 02)
+- ✓ Structure de l'ARN (Fiche 04)
 
 ### Genetique et evolution
-- âœ" Mutations (Fiche 03)
-- âœ" Heredite mendelienne (Fiche 05)
+- ✓ Mutations (Fiche 03)
+- ✓ Heredite mendelienne (Fiche 05)
 
 ### Biologie moleculaire
-- âœ" Transcription ADN â†' ARN (Fiche 04)
+- ✓ Transcription ADN → ARN (Fiche 04)
 
 ### Encore a couvrir
-- â˜ Traduction ARN â†' Proteine (Fiche 06)
-- â˜ Replication de l'ADN (Fiche 07)
-- â˜ Structure des proteines (Fiche 08)
+- ✗ Traduction ARN → Proteine (Fiche 06)
+- ✗ Replication de l'ADN (Fiche 07)
+- ✗ Structure des proteines (Fiche 08)
 
 ---
 

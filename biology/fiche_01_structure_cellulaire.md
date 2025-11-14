@@ -184,8 +184,77 @@ Cellule → Noyau → Chromatine → Chromosomes → ADN/ARN → Nucleotides
 - Identification d'especes par sequencage
 
 **Comparaison evolutive** :
-- Arbres phylogenetiques basés sur sequences d'ARN ribosomal
+- Arbres phylogenetiques basÃ©s sur sequences d'ARN ribosomal
 - Reconstruction de l'histoire evolutive
+
+---
+
+## Pour aller plus loin
+
+### Lectures recommandees
+
+**Livres** :
+- "The Cell" (Alberts et al.) - Chapitre 1 sur l'evolution cellulaire
+- "Molecular Biology of the Cell" - Introduction aux cellules
+- "Life: The Science of Biology" - Diversite du vivant
+
+**Articles scientifiques** :
+- Woese et al. (1990) : "Towards a natural system of organisms" - Classification en trois domaines
+- Lane & Martin (2010) : "The energetics of genome complexity" - Origine des eucaryotes
+- Papers sur l'arbre de vie universel
+
+### Ressources en ligne
+
+**Cours et videos** :
+- Khan Academy : "Cells and organisms" (videos courtes, claires)
+- MIT OpenCourseWare : 7.012 Introduction to Biology
+- iBiology : Seminaires sur biologie cellulaire
+- Nature Education : Articles sur structure cellulaire
+
+**Bases de donnees et outils** :
+- NCBI Taxonomy Browser : Explorer les trois domaines
+- Tree of Life Web Project : Phylogenie interactive
+- MicrobeWiki : Encyclopedie des microorganismes
+
+**Interactif** :
+- CellsAlive! : Animations de cellules
+- Visible Body : Modeles 3D de cellules
+- HHMI BioInteractive : Videos et animations
+
+### Exercices pratiques
+
+**Exercice 1 : Classification** :
+Classe les organismes suivants dans le bon domaine (Eukaryota, Bacteria, Archaea) :
+- E. coli
+- Champignon de Paris
+- Methanococcus (organisme produisant du methane)
+- Algue verte
+- Streptococcus
+- Halophile des lacs sales
+- Paramecie
+
+**Exercice 2 : Comparaison** :
+Cree un tableau comparant 5 caracteristiques de ton choix entre eucaryotes et procaryotes.
+
+**Exercice 3 : Bio-informatique** :
+Recherche sur NCBI la taille du genome de :
+- E. coli (bacterie)
+- Saccharomyces cerevisiae (levure, eucaryote unicellulaire)
+- Homo sapiens (eucaryote multicellulaire)
+Compare les tailles et explique les differences.
+
+**Exercice 4 : Phylogenie** :
+Utilise le NCBI Taxonomy Browser pour :
+1. Trouver l'ancetre commun entre humain et levure
+2. Identifier a quel niveau taxonomique ils divergent
+3. Comparer cette distance avec celle entre humain et E. coli
+
+**Exercice 5 : Structures cellulaires** :
+Dessine un schema simplifie d'une cellule eucaryote et d'une cellule procaryote, en annotant :
+- Localisation de l'ADN
+- Presence/absence d'organelles
+- Membrane cellulaire
+- Taille relative
 
 ---
 
