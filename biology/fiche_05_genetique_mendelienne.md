@@ -1,7 +1,14 @@
 # Fiche 05 : Genetique mendelienne et heredite
 
 **Date de creation** : 14 novembre 2025  
+**Derniere mise a jour** : 15 novembre 2025  
 **Sujet** : Lois de Mendel, alleles, genotype, phenotype, carre de Punnett
+
+---
+
+## Note importante
+
+Cette fiche couvre les **concepts fondamentaux** de la genetique mendelienne. Pour les **applications mathematiques avancees** (probabilites de tirage, resolution de problemes comme IPRB), consulte la **Fiche 06 : Probabilites en genetique**.
 
 ---
 
@@ -16,14 +23,14 @@
 
 **Problemes du modele**
 1. **Violations empiriques** :
-   - Nombreuses personnes plus grandes que leurs deux parents
-   - Traits qui "sautent" des generations
-   - Reapparition de traits des grands-parents
+    - Nombreuses personnes plus grandes que leurs deux parents
+    - Traits qui "sautent" des generations
+    - Reapparition de traits des grands-parents
 
 2. **Problemes statistiques** :
-   - Avec le temps, tous les traits se melangeraient vers la moyenne
-   - Limitation severe de la variation
-   - Contradiction avec la diversite observee
+    - Avec le temps, tous les traits se melangeraient vers la moyenne
+    - Limitation severe de la variation
+    - Contradiction avec la diversite observee
 
 ### Revolution mendelienne (1865)
 
@@ -98,13 +105,13 @@ Allele recessif (a) : Blanc
 
 **Types**
 - **Homozygote dominant** : AA
-  - Deux alleles dominants
-  - Affiche le trait dominant
-  
+    - Deux alleles dominants
+    - Affiche le trait dominant
+
 - **Homozygote recessif** : aa
-  - Deux alleles recessifs
-  - Affiche le trait recessif
-  - **Seule facon** d'afficher le trait recessif
+    - Deux alleles recessifs
+    - Affiche le trait recessif
+    - **Seule facon** d'afficher le trait recessif
 
 **Exemple**
 ```
@@ -545,7 +552,7 @@ ou :
 
 **Algorithmes**
 - Parcours d'arbres
-- Calcul de probabilites
+- Calcul de probabilites (voir Fiche 06)
 - Inference de genotypes
 
 ### GWAS (Genome-Wide Association Studies)
@@ -638,7 +645,7 @@ Aa x aa → 50% Aa (violet), 50% aa (blanc)
 ```
 </details>
 
-### Exercice 3 : Probabilite
+### Exercice 3 : Probabilite simple
 Deux parents heterozygotes (Aa) ont 3 enfants.
 Quelle est la probabilite que les 3 soient phenotype dominant ?
 
@@ -697,20 +704,17 @@ Croisement AO x AO :
 
 ## Problemes Rosalind associes
 
-**Mendel's First Law (IPRB)**
-- Calculer probabilites avec loi de Mendel
-- Carre de Punnett
-- Croisements aleatoires dans une population
+**Introduction aux concepts** (cette fiche)
+- Comprendre alleles, genotypes, phenotypes
+- Maitriser le carre de Punnett
+- Ratios mendeliens de base
 
-**Recurrence Relations (FIB, FIBD)**
-- Modeliser croissance de populations
-- Avec mutations/mortalite
-- Lien avec genetique des populations
+**Calculs mathematiques avancees** (voir Fiche 06)
+- **IPRB** : Mendel's First Law (probabilites de tirage)
+- **IEV** : Calculating Expected Offspring
+- **LIA** : Independent Alleles (loi d'assortiment)
 
-**Independent Alleles (LIA)**
-- Loi de l'assortiment independant
-- Probabilites avec plusieurs facteurs
-- Distributions binomiales
+**Note importante** : Pour resoudre IPRB et les problemes mathematiques complexes, tu auras besoin des formules de probabilites de la **Fiche 06 : Probabilites en genetique**.
 
 ---
 
@@ -768,20 +772,32 @@ Croisement AO x AO :
 - "The Monk in the Garden" (Robin Marantz Henig) - Histoire de Mendel
 - "The Gene" (Siddhartha Mukherjee) - Histoire de la genetique
 - Papers originaux de Mendel (traduits)
+- "Introduction to Genetic Analysis" (Griffiths et al.)
 
 ### Ressources en ligne
 - PhET Interactive Simulations (genetique)
 - Genetic Science Learning Center (Utah)
 - Khan Academy (genetique mendelienne)
+- Rosalind.info (problemes pratiques)
+- MIT OpenCourseWare (Genetics)
 
 ### Pratique
-- Rosalind.info (problemes IPRB, LIA)
+- Rosalind.info (problemes conceptuels)
 - Construire carres de Punnett
 - Analyser pedigrees reels
+- **Fiche 06** pour les problemes mathematiques (IPRB)
+
+### Approfondissements
+- Genetique des populations
+- Genetique quantitative
+- Epigenetique et regulation
+- Applications CRISPR et gene editing
 
 ---
 
-**Prochaine fiche** : Code genetique et traduction (ARN → Proteine)
+**Prochaine fiche** : **Fiche 06 - Probabilites en genetique** (applications mathematiques avancees)
+
+Puis : Code genetique et traduction (ARN → Proteine)
 
 ---
 
@@ -797,3 +813,5 @@ Croisement AO x AO :
 - GWAS et etudes d'association
 - Amelioration genetique
 - Comprehension de l'evolution
+
+**Pour les applications mathematiques** (tirage sans remise, probabilites composees, resolution IPRB), passe maintenant a la **Fiche 06 : Probabilites en genetique** !

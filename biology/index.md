@@ -1,13 +1,13 @@
 # Index des fiches de revision - Biologie moleculaire
 
 **Date de creation** : 14 novembre 2025  
-**Version** : 1.1
+**Derniere mise a jour** : 15 novembre 2025
 
 ---
 
 ## Vue d'ensemble
 
-Ce dossier contient 5 fiches de revision thematiques couvrant les bases de la biologie moleculaire necessaires pour la bio-informatique. Les fiches sont organisees de maniere progressive et peuvent etre etudiees dans l'ordre.
+Ce dossier contient 6 fiches de revision thematiques couvrant les bases de la biologie moleculaire necessaires pour la bio-informatique. Les fiches sont organisees de maniere progressive et peuvent etre etudiees dans l'ordre.
 
 ---
 
@@ -113,7 +113,7 @@ Ce dossier contient 5 fiches de revision thematiques couvrant les bases de la bi
 
 ---
 
-### Fiche 05 : Genetique mendelienne et heredite (NOUVELLE !)
+### Fiche 05 : Genetique mendelienne et heredite
 **Fichier** : `fiche_05_genetique_mendelienne.md`
 
 **Contenu** :
@@ -137,7 +137,34 @@ Ce dossier contient 5 fiches de revision thematiques couvrant les bases de la bi
 - Comprendre l'heredite et la transmission des traits
 - Base pour genetique des populations
 - Essentiel pour GWAS et variant analysis
-- Probleme Rosalind : IPRB, LIA
+- Probleme Rosalind : IPRB, LIA (voir Fiche 06 pour les maths)
+
+---
+
+### Fiche 06 : Probabilites en genetique
+**Fichier** : `fiche_06_probabilites_genetiques.md`
+
+**Contenu** :
+- Probabilites de croisement (carre de Punnett revisite)
+- Tirage sans remise dans une population
+- Calcul de P(tirer un couple)
+- Formules pour couples identiques vs differents
+- Resolution complete de problemes type IPRB
+- Pieges courants et verification
+- Algorithme de resolution
+
+**Concepts cles** :
+- P(dominant) = Σ [P(tirer couple) × P(dominant|couple)]
+- Meme genotype : (nb_G/N) × ((nb_G-1)/(N-1))
+- Genotypes differents : 2 × (nb_G1×nb_G2) / (N×(N-1))
+- Facteur ×2 pour l'ordre de tirage
+- Verification : Σ P(tirage) = 1.0
+
+**Pour qui** :
+- Resoudre les problemes mathematiques de genetique
+- Comprendre les probabilites avancees
+- Modeliser les croisements
+- Probleme Rosalind : IPRB, IEV, LIA
 
 ---
 
@@ -149,6 +176,7 @@ Ce dossier contient 5 fiches de revision thematiques couvrant les bases de la bi
 3. **Fiche 03** - Comprendre comment l'ADN change (mutations)
 4. **Fiche 04** - Comprendre comment l'ADN est lu (transcription)
 5. **Fiche 05** - Comprendre comment l'ADN se transmet (heredite)
+6. **Fiche 06** - Calculer les probabilites de transmission
 
 ### Liens entre les fiches
 ```
@@ -161,6 +189,8 @@ Fiche 03 (Mutations) → comment change-t-il ?
 Fiche 04 (ARN) → comment est-il utilise ?
          ↓
 Fiche 05 (Mendel) → comment se transmet-il ?
+         ↓
+Fiche 06 (Probas) → comment calculer les transmissions ?
 ```
 
 ---
@@ -182,9 +212,13 @@ Fiche 05 (Mendel) → comment se transmet-il ?
 - SPLC : RNA Splicing (plus avance)
 
 **Fiche 05 (Mendel)** :
+- Introduction aux concepts (alleles, genotypes)
+- Carre de Punnett de base
+
+**Fiche 06 (Probabilites)** :
 - IPRB : Mendel's First Law (probabilites genetiques)
+- IEV : Calculating Expected Offspring
 - LIA : Independent Alleles (2e loi de Mendel)
-- (Genetique des populations plus tard)
 
 ### Ordre suggere des problemes Rosalind
 1. DNA - Compter les nucleotides
@@ -193,7 +227,7 @@ Fiche 05 (Mendel) → comment se transmet-il ?
 4. HAMM - Distance de Hamming
 5. FIB - Fibonacci (deja fait)
 6. GC - Contenu GC
-7. IPRB - Loi de Mendel
+7. **IPRB** - Loi de Mendel (avec Fiche 06 !)
 8. PROT - Traduction (necessite fiche suivante sur code genetique)
 
 ---
@@ -208,6 +242,7 @@ Fiche 05 (Mendel) → comment se transmet-il ?
 - Mnemoniques
 - Lien avec la bio-informatique
 - Exercices pratiques
+- Section "Pour aller plus loin"
 
 ### Format unifie
 - Pas de caracteres speciaux problematiques
@@ -244,20 +279,20 @@ Fiche 05 (Mendel) → comment se transmet-il ?
 ## Prochaines fiches a creer
 
 ### Priorite 1 (bases essentielles)
-- **Fiche 06** : Code genetique et traduction
-- **Fiche 07** : Replication de l'ADN
-- **Fiche 08** : Structure des proteines
+- **Fiche 07** : Code genetique et traduction
+- **Fiche 08** : Replication de l'ADN
+- **Fiche 09** : Structure des proteines
 
 ### Priorite 2 (algorithmique)
-- **Fiche 09** : Alignement de sequences (Needleman-Wunsch)
-- **Fiche 10** : Recherche de motifs
-- **Fiche 11** : Assemblage de genomes (graphes de De Bruijn)
+- **Fiche 10** : Alignement de sequences (Needleman-Wunsch)
+- **Fiche 11** : Recherche de motifs
+- **Fiche 12** : Assemblage de genomes (graphes de De Bruijn)
 
 ### Priorite 3 (specialisations)
-- **Fiche 12** : Phylogenie moleculaire
-- **Fiche 13** : Sequencage NGS
-- **Fiche 14** : Transcriptomique (RNA-seq)
-- **Fiche 15** : Genetique des populations (Hardy-Weinberg)
+- **Fiche 13** : Phylogenie moleculaire
+- **Fiche 14** : Sequencage NGS
+- **Fiche 15** : Transcriptomique (RNA-seq)
+- **Fiche 16** : Genetique des populations (Hardy-Weinberg)
 
 ---
 
@@ -283,14 +318,19 @@ Fiche 05 (Mendel) → comment se transmet-il ?
 
 ## Changelog
 
-### Version 1.1 (14 novembre 2025)
+### 15 novembre 2025
+- Ajout de la Fiche 06 : Probabilites en genetique
+- Approfondissement mathematique pour IPRB
+- Formules de tirage sans remise
+- Algorithme de resolution complet
+- Cas de tests et verification
+
+### 14 novembre 2025
 - Ajout de la Fiche 05 : Genetique mendelienne et heredite
 - Mise a jour de la progression d'apprentissage
 - Ajout de problemes Rosalind correspondants (IPRB, LIA)
 - Mise a jour des prochaines fiches a creer
-
-### Version 1.0 (14 novembre 2025)
-- Creation de 4 fiches thematiques
+- Creation de 4 fiches thematiques initiales
 - Separation des sujets pour clarte
 - Correction problemes d'encodage
 - Ajout d'exercices pratiques
@@ -315,12 +355,11 @@ Fiche 05 (Mendel) → comment se transmet-il ?
 ### Mise a jour
 - Ajouter nouvelles fiches au fur et a mesure
 - Mettre a jour cet index
-- Incrementer numero de version
 - Noter changements dans changelog
 
 ---
 
-## Themes couverts par les 5 fiches
+## Themes couverts par les 6 fiches
 
 ### Biologie cellulaire et moleculaire
 - ✓ Structure cellulaire (Fiche 01)
@@ -330,14 +369,15 @@ Fiche 05 (Mendel) → comment se transmet-il ?
 ### Genetique et evolution
 - ✓ Mutations (Fiche 03)
 - ✓ Heredite mendelienne (Fiche 05)
+- ✓ Probabilites genetiques (Fiche 06)
 
 ### Biologie moleculaire
 - ✓ Transcription ADN → ARN (Fiche 04)
 
 ### Encore a couvrir
-- ✗ Traduction ARN → Proteine (Fiche 06)
-- ✗ Replication de l'ADN (Fiche 07)
-- ✗ Structure des proteines (Fiche 08)
+- ☐ Traduction ARN → Proteine (Fiche 07)
+- ☐ Replication de l'ADN (Fiche 08)
+- ☐ Structure des proteines (Fiche 09)
 
 ---
 
@@ -349,9 +389,10 @@ Tu as maintenant une base solide pour :
 - Apprehender les algorithmes de bio-informatique
 - Contribuer a des projets open source
 - Comprendre la genetique des populations
+- Resoudre des problemes mathematiques de genetique
 
 **Next steps** :
-1. Reviser ces 5 fiches regulierement
+1. Reviser ces 6 fiches regulierement
 2. Resoudre les problemes Rosalind correspondants
 3. Implementer les algorithmes en Python
 4. Contribuer a des projets comme rust-bio
