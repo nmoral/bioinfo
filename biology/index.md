@@ -1,14 +1,14 @@
 # Index des fiches de revision - Biologie moleculaire
 
 **Date de creation** : 14 novembre 2025  
-**Version** : 1.3
-**Derniere mise a jour** : 16 novembre 2025
+**Version** : 1.4
+**Derniere mise a jour** : 17 novembre 2025
 
 ---
 
 ## Vue d'ensemble
 
-Ce dossier contient 8 fiches de revision thematiques couvrant les bases de la biologie moleculaire et des probabilites necessaires pour la bio-informatique. Les fiches sont organisees de maniere progressive et peuvent etre etudiees dans l'ordre.
+Ce dossier contient 9 fiches de revision thematiques couvrant les bases de la biologie moleculaire, des probabilites et des algorithmes necessaires pour la bio-informatique. Les fiches sont organisees de maniere progressive et peuvent etre etudiees dans l'ordre.
 
 ---
 
@@ -238,6 +238,54 @@ Ce dossier contient 8 fiches de revision thematiques couvrant les bases de la bi
 
 ---
 
+### Fiche 09 : Motifs d'ADN et repetitions (NOUVELLE !)
+**Fichier** : `fiche_09_motifs_adn_repetitions.md`
+
+**Contenu** :
+- Definition des motifs d'ADN et leur importance biologique
+- Types de motifs (regulateurs, liaison proteique, structuraux, fonctionnels)
+- Repetitions genomiques (en tandem vs dispersees)
+- Cas detaille des repetitions Alu (~1M copies, 11% genome humain)
+- Mecanisme de retrotransposition
+- Algorithmes de recherche de motifs (naive, KMP, Boyer-Moore)
+- Applications en bio-informatique et annotation
+
+**Concepts cles** :
+- Motif = intervalle d'ADN partage entre organismes
+- Meme motif → meme fonction (principe d'homologie)
+- Repetitions >> frequence aleatoire (genomes non aleatoires)
+- Alu : ~300 bp, ~1 million copies, ~11% du genome
+- Retrotransposition : ARN → ADN → reinsertion
+- Impact parasitique : cause maladies genetiques
+- Algorithmes : naive O(n*m), KMP O(n+m)
+- Motifs degeneres : TATAWR (W=A/T, R=A/G)
+
+**Pour qui** :
+- Comprendre l'architecture des genomes (pas aleatoires !)
+- Base pour annotation automatique de genomes
+- Algorithmes de pattern matching essentiels
+- Biologie comparative et conservation evolutive
+- Detection d'elements mobiles et transposables
+- Design moleculaire (primers, sondes)
+- Problemes Rosalind : SUBS, CONS, KMP, LCSM
+
+**Applications pratiques** :
+- RepeatMasker : masquage avant BLAST/annotation
+- MEME/MAST : decouverte automatique de motifs
+- JASPAR : prediction sites de liaison TF
+- Tandem Repeats Finder : microsatellites (forensique)
+- Annotation de promoteurs (TATA box, CAAT box)
+- Identification de sites d'epissage (GT...AG)
+
+**Liens avec autres fiches** :
+- Fiche 02 : Structure ADN (base pour comprendre sequences)
+- Fiche 03 : Mutations (evolution des motifs et repetitions)
+- Fiche 04 : Transcription (motifs regulateurs, sites d'epissage)
+- Fiche 07 : Code genetique (codons comme motifs fonctionnels)
+- Fiche 08 : Bayes (models probabilistes HMM pour detection)
+
+---
+
 ## Progression d'apprentissage recommandee
 
 ### Ordre logique
@@ -249,6 +297,7 @@ Ce dossier contient 8 fiches de revision thematiques couvrant les bases de la bi
 6. **Fiche 06** - Applications mathematiques de la genetique (probabilites)
 7. **Fiche 07** - Comprendre comment l'information devient proteine (traduction)
 8. **Fiche 08** - Inference probabiliste et applications (theoreme de Bayes)
+9. **Fiche 09** - Motifs et repetitions dans les genomes (patterns d'ADN)
 
 ### Liens entre les fiches
 ```
@@ -267,9 +316,11 @@ Fiche 05 (Mendel) → comment tout cela se transmet ?
 Fiche 06 (Probabilites) → calculs mathematiques de transmission
          ↓
 Fiche 08 (Bayes) → inference et mise a jour de connaissances
+         ↓
+Fiche 09 (Motifs) → patterns et repetitions dans les genomes
 ```
 
-**Note** : La Fiche 05 (Mendel) peut etre etudiee a tout moment apres la Fiche 02, car elle est plus independante du flux central (ADN → ARN → Proteine). Les fiches 06 et 08 ajoutent les outils mathematiques pour la modelisation.
+**Note** : La Fiche 05 (Mendel) peut etre etudiee a tout moment apres la Fiche 02, car elle est plus independante du flux central (ADN → ARN → Proteine). Les fiches 06 et 08 ajoutent les outils mathematiques pour la modelisation. La fiche 09 applique ces concepts a la recherche de patterns biologiques.
 
 ---
 
@@ -313,6 +364,12 @@ Fiche 08 (Bayes) → inference et mise a jour de connaissances
   - Approche phylogenie bayesienne
   - Interpretation de scores de confiance
 
+**Fiche 09 (Motifs)** :
+- SUBS : Finding a Motif in DNA
+- CONS : Consensus and Profile
+- KMP : Speeding Up Motif Finding (avance)
+- LCSM : Finding a Shared Motif (avance)
+
 ### Ordre suggere des problemes Rosalind
 1. DNA - Compter les nucleotides
 2. RNA - Transcription
@@ -321,10 +378,14 @@ Fiche 08 (Bayes) → inference et mise a jour de connaissances
 5. FIB - Fibonacci (deja fait)
 6. GC - Contenu GC
 7. PROT - Traduction ARN → Proteine
-8. IPRB - Loi de Mendel (avec Fiche 06 pour calculs)
-9. ORF - Cadres de lecture
-10. SPLC - Epissage + Traduction
-11. PROB - Probabilites de sequences
+8. SUBS - Finding a Motif (NOUVEAU !)
+9. CONS - Consensus and Profile (NOUVEAU !)
+10. IPRB - Loi de Mendel (avec Fiche 06 pour calculs)
+11. ORF - Cadres de lecture
+12. SPLC - Epissage + Traduction
+13. PROB - Probabilites de sequences
+14. KMP - Speeding Up Motif Finding (avance)
+15. LCSM - Finding a Shared Motif (avance)
 
 ---
 
@@ -381,12 +442,11 @@ Fiche 08 (Bayes) → inference et mise a jour de connaissances
 ## Prochaines fiches a creer
 
 ### Priorite 1 (bases essentielles)
-- **Fiche 09** : Structure des proteines (secondaire, tertiaire, quaternaire)
-- **Fiche 10** : Replication de l'ADN
+- **Fiche 10** : Structure des proteines (secondaire, tertiaire, quaternaire)
+- **Fiche 11** : Replication de l'ADN
 
 ### Priorite 2 (algorithmique)
-- **Fiche 11** : Alignement de sequences (Needleman-Wunsch, Smith-Waterman)
-- **Fiche 12** : Recherche de motifs
+- **Fiche 12** : Alignement de sequences (Needleman-Wunsch, Smith-Waterman)
 - **Fiche 13** : Assemblage de genomes (graphes de De Bruijn)
 
 ### Priorite 3 (methodes avancees)
@@ -425,6 +485,16 @@ Fiche 08 (Bayes) → inference et mise a jour de connaissances
 ---
 
 ## Changelog
+
+### Version 1.4 (17 novembre 2025)
+- Ajout de la Fiche 09 : Motifs d'ADN et repetitions
+- Cas detaille des repetitions Alu (~1M copies, 11% genome)
+- Algorithmes de recherche de motifs (naive, KMP, Boyer-Moore)
+- Applications : RepeatMasker, MEME, JASPAR
+- Problemes Rosalind : SUBS, CONS, KMP, LCSM
+- Biologie comparative et conservation evolutive
+- Mise a jour de la progression d'apprentissage
+- Reorganisation des prochaines fiches (Structure proteines → Fiche 10)
 
 ### Version 1.3 (16 novembre 2025)
 - Ajout de la Fiche 08 : Theoreme de Bayes
@@ -482,7 +552,7 @@ Fiche 08 (Bayes) → inference et mise a jour de connaissances
 
 ---
 
-## Themes couverts par les 8 fiches
+## Themes couverts par les 9 fiches
 
 ### Biologie cellulaire et moleculaire
 - ✓ Structure cellulaire (Fiche 01)
@@ -498,14 +568,17 @@ Fiche 08 (Bayes) → inference et mise a jour de connaissances
 - ✓ Probabilites genetiques (Fiche 06)
 - ✓ Theoreme de Bayes et inference (Fiche 08)
 
+### Algorithmique et bioinformatique
+- ✓ Motifs et repetitions genomiques (Fiche 09)
+
 ### Dogme central
 - ✓ ADN → ARN (Transcription, Fiche 04)
 - ✓ ARN → Proteine (Traduction, Fiche 07)
 
 ### Encore a couvrir
-- ☐ Structure des proteines (Fiche 09)
-- ☐ Replication de l'ADN (Fiche 10)
-- ☐ Alignement de sequences (Fiche 11)
+- ☐ Structure des proteines (Fiche 10)
+- ☐ Replication de l'ADN (Fiche 11)
+- ☐ Alignement de sequences (Fiche 12)
 - ☐ HMM et modeles probabilistes (Fiche 14)
 
 ---
@@ -566,17 +639,22 @@ Fiche 08 (Bayes) → inference et mise a jour de connaissances
 **Logiciels cibles** : BEAST, MrBayes
 
 ### Objectif : Annotation de genomes
-**Fiches essentielles** : 2, 4, 7, 8
-**Temps estime** : 3-4 semaines
-**Logiciels cibles** : GeneMark, Glimmer, Prodigal
+**Fiches essentielles** : 2, 4, 7, 8, 9
+**Temps estime** : 4-5 semaines
+**Logiciels cibles** : GeneMark, Glimmer, Prodigal, RepeatMasker
 
 ### Objectif : Variant calling
 **Fiches essentielles** : 2, 3, 8
 **Temps estime** : 3-4 semaines
 **Logiciels cibles** : GATK, FreeBayes
 
+### Objectif : Recherche de motifs et patterns
+**Fiches essentielles** : 2, 3, 9
+**Temps estime** : 2-3 semaines
+**Logiciels cibles** : RepeatMasker, MEME, JASPAR
+
 ### Objectif : Base complete bio-informatique
-**Toutes les fiches** : 1-8
+**Toutes les fiches** : 1-9
 **Temps estime** : 2-3 mois
 **Resultat** : Solide comprehension des fondamentaux
 
@@ -594,12 +672,15 @@ Tu as maintenant une base solide pour :
 - Comprendre la genetique et l'heredite
 - Maitriser les bases de l'inference probabiliste
 - Utiliser des methodes bayesiennes modernes
+- Detecter et analyser motifs et repetitions dans les genomes
+- Comprendre l'architecture des genomes (non aleatoires !)
 
 **Next steps** :
-1. Reviser ces 8 fiches regulierement
-2. Resoudre les problemes Rosalind correspondants
-3. Implementer les algorithmes en Python
+1. Reviser ces 9 fiches regulierement
+2. Resoudre les problemes Rosalind correspondants (dont SUBS, CONS)
+3. Implementer les algorithmes en Python (recherche de motifs, KMP)
 4. Explorer les logiciels bayesiens (BEAST, MrBayes)
-5. Contribuer a des projets comme rust-bio
+5. Utiliser RepeatMasker sur sequences reelles
+6. Contribuer a des projets comme rust-bio
 
-**Rappel important** : Pas de pression, pas de deadline. C'est un marathon, pas un sprint. Prends le temps de bien comprendre chaque concept avant de passer au suivant. La Fiche 08 complete maintenant tes outils mathematiques pour aborder la bio-informatique moderne avec les methodes d'inference bayesienne !
+**Rappel important** : Pas de pression, pas de deadline. C'est un marathon, pas un sprint. Prends le temps de bien comprendre chaque concept avant de passer au suivant. La Fiche 09 te donne maintenant les outils pour comprendre la structure complexe des genomes et les patterns biologiques qui s'y cachent !
