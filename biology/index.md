@@ -1,14 +1,14 @@
 # Index des fiches de revision - Biologie moleculaire
 
 **Date de creation** : 14 novembre 2025  
-**Version** : 1.2
-**Derniere mise a jour** : 15 novembre 2025
+**Version** : 1.3
+**Derniere mise a jour** : 16 novembre 2025
 
 ---
 
 ## Vue d'ensemble
 
-Ce dossier contient 7 fiches de revision thematiques couvrant les bases de la biologie moleculaire necessaires pour la bio-informatique. Les fiches sont organisees de maniere progressive et peuvent etre etudiees dans l'ordre.
+Ce dossier contient 8 fiches de revision thematiques couvrant les bases de la biologie moleculaire et des probabilites necessaires pour la bio-informatique. Les fiches sont organisees de maniere progressive et peuvent etre etudiees dans l'ordre.
 
 ---
 
@@ -142,15 +142,32 @@ Ce dossier contient 7 fiches de revision thematiques couvrant les bases de la bi
 
 ---
 
-### Fiche 06 : [A definir - existe deja dans ton projet]
-**Fichier** : `fiche_06_[nom_a_definir].md`
+### Fiche 06 : Probabilites en genetique
+**Fichier** : `fiche_06_probabilites_genetiques.md`
 
 **Contenu** :
-- [A completer selon ta fiche existante]
+- Probabilites avancees et tirage sans remise
+- Calculs de croisements genetiques
+- Formules pour couples de meme genotype
+- Formules pour couples de genotypes differents
+- Resolution complete de problemes IPRB
+- Verification et tests de coherence
+
+**Concepts cles** :
+- Tirage sans remise : (nb_G/N) × ((nb_G-1)/(N-1))
+- Couples differents : facteur ×2
+- Probabilite totale = somme des contributions
+- Verification : somme des probabilites = 1.0
+
+**Pour qui** :
+- Applications mathematiques de la genetique mendelienne
+- Resolution de problemes complexes de probabilites
+- Comprendre IPRB et problemes similaires
+- Base pour modelisation genetique
 
 ---
 
-### Fiche 07 : Code genetique et traduction (NOUVELLE !)
+### Fiche 07 : Code genetique et traduction
 **Fichier** : `fiche_07_code_genetique_traduction.md`
 
 **Contenu** :
@@ -183,6 +200,44 @@ Ce dossier contient 7 fiches de revision thematiques couvrant les bases de la bi
 
 ---
 
+### Fiche 08 : Theoreme de Bayes (NOUVELLE !)
+**Fichier** : `fiche_08_theoreme_bayes.md`
+
+**Contenu** :
+- Probabilites conditionnelles P(A|B)
+- Formulation du theoreme de Bayes
+- Prior, vraisemblance, posterior, evidence
+- Exemple detaille : test genetique
+- Calculs pratiques et tableaux de contingence
+- Applications en bio-informatique
+- Reseaux bayesiens
+- Statistiques bayesiennes vs frequentistes
+
+**Concepts cles** :
+- P(A|B) = P(B|A) × P(A) / P(B)
+- Retourner les probabilites conditionnelles
+- Importance de la prevalence (prior)
+- Mise a jour de croyances avec nouvelles donnees
+- MCMC pour inference complexe
+
+**Pour qui** :
+- Comprendre inference probabiliste
+- Base pour phylogenie bayesienne (BEAST, MrBayes)
+- Annotation de genomes et variant calling
+- Tests diagnostiques et leur interpretation
+- Machine learning bayesien
+- Essentiel pour bio-informatique moderne
+
+**Applications** :
+- Inference phylogenetique (BEAST, MrBayes, PhyloBayes)
+- Annotation de genes (GeneMark, Glimmer)
+- Variant calling (GATK, FreeBayes)
+- Classificateurs bayesiens naifs
+- Reseaux bayesiens pour genetique
+- Tests de paternite
+
+---
+
 ## Progression d'apprentissage recommandee
 
 ### Ordre logique
@@ -191,8 +246,9 @@ Ce dossier contient 7 fiches de revision thematiques couvrant les bases de la bi
 3. **Fiche 03** - Comprendre comment l'ADN change (mutations)
 4. **Fiche 04** - Comprendre comment l'ADN est lu (transcription)
 5. **Fiche 05** - Comprendre comment l'ADN se transmet (heredite)
-6. **Fiche 06** - [A definir selon ta fiche existante]
+6. **Fiche 06** - Applications mathematiques de la genetique (probabilites)
 7. **Fiche 07** - Comprendre comment l'information devient proteine (traduction)
+8. **Fiche 08** - Inference probabiliste et applications (theoreme de Bayes)
 
 ### Liens entre les fiches
 ```
@@ -204,14 +260,16 @@ Fiche 03 (Mutations) → comment change-t-il ?
          ↓
 Fiche 04 (ARN) → comment est-il copie en ARN ?
          ↓
-Fiche 06 → [lien a definir]
-         ↓
 Fiche 07 (Traduction) → comment l'ARN devient proteine ?
          ↓
 Fiche 05 (Mendel) → comment tout cela se transmet ?
+         ↓
+Fiche 06 (Probabilites) → calculs mathematiques de transmission
+         ↓
+Fiche 08 (Bayes) → inference et mise a jour de connaissances
 ```
 
-**Note** : La Fiche 05 (Mendel) peut etre etudiee a tout moment apres la Fiche 02, car elle est plus independante du flux central (ADN → ARN → Proteine).
+**Note** : La Fiche 05 (Mendel) peut etre etudiee a tout moment apres la Fiche 02, car elle est plus independante du flux central (ADN → ARN → Proteine). Les fiches 06 et 08 ajoutent les outils mathematiques pour la modelisation.
 
 ---
 
@@ -236,8 +294,10 @@ Fiche 05 (Mendel) → comment tout cela se transmet ?
 - LIA : Independent Alleles (2e loi de Mendel)
 - (Genetique des populations plus tard)
 
-**Fiche 06 ([A definir])** :
-- [A completer selon ta fiche existante]
+**Fiche 06 (Probabilites)** :
+- IPRB : Mendel's First Law (resolution complete)
+- IEV : Calculating Expected Offspring
+- LIA : Independent Alleles
 
 **Fiche 07 (Traduction)** :
 - PROT : Translating RNA into Protein
@@ -246,6 +306,13 @@ Fiche 05 (Mendel) → comment tout cela se transmet ?
 - MRNA : Inferring mRNA from Protein
 - SPLC : RNA Splicing (combine avec Fiche 04)
 
+**Fiche 08 (Bayes)** :
+- PROB : Introduction to Random Strings
+- Pas de probleme explicitement bayesien, mais utile pour :
+  - Comprendre modeles probabilistes
+  - Approche phylogenie bayesienne
+  - Interpretation de scores de confiance
+
 ### Ordre suggere des problemes Rosalind
 1. DNA - Compter les nucleotides
 2. RNA - Transcription
@@ -253,10 +320,11 @@ Fiche 05 (Mendel) → comment tout cela se transmet ?
 4. HAMM - Distance de Hamming
 5. FIB - Fibonacci (deja fait)
 6. GC - Contenu GC
-7. PROT - Traduction ARN → Proteine (NOUVEAU !)
-8. IPRB - Loi de Mendel
-9. ORF - Cadres de lecture (NOUVEAU !)
-10. SPLC - Epissage + Traduction (NOUVEAU !)
+7. PROT - Traduction ARN → Proteine
+8. IPRB - Loi de Mendel (avec Fiche 06 pour calculs)
+9. ORF - Cadres de lecture
+10. SPLC - Epissage + Traduction
+11. PROB - Probabilites de sequences
 
 ---
 
@@ -313,19 +381,20 @@ Fiche 05 (Mendel) → comment tout cela se transmet ?
 ## Prochaines fiches a creer
 
 ### Priorite 1 (bases essentielles)
-- **Fiche 08** : Structure des proteines (secondaire, tertiaire, quaternaire)
-- **Fiche 09** : Replication de l'ADN
+- **Fiche 09** : Structure des proteines (secondaire, tertiaire, quaternaire)
+- **Fiche 10** : Replication de l'ADN
 
 ### Priorite 2 (algorithmique)
-- **Fiche 10** : Alignement de sequences (Needleman-Wunsch)
-- **Fiche 11** : Recherche de motifs
-- **Fiche 12** : Assemblage de genomes (graphes de De Bruijn)
+- **Fiche 11** : Alignement de sequences (Needleman-Wunsch, Smith-Waterman)
+- **Fiche 12** : Recherche de motifs
+- **Fiche 13** : Assemblage de genomes (graphes de De Bruijn)
 
-### Priorite 3 (specialisations)
-- **Fiche 13** : Phylogenie moleculaire
-- **Fiche 14** : Sequencage NGS
-- **Fiche 15** : Transcriptomique (RNA-seq)
-- **Fiche 16** : Genetique des populations (Hardy-Weinberg)
+### Priorite 3 (methodes avancees)
+- **Fiche 14** : Hidden Markov Models (HMM)
+- **Fiche 15** : Phylogenie moleculaire
+- **Fiche 16** : Sequencage NGS
+- **Fiche 17** : Transcriptomique (RNA-seq)
+- **Fiche 18** : Genetique des populations (Hardy-Weinberg)
 
 ---
 
@@ -347,9 +416,25 @@ Fiche 05 (Mendel) → comment tout cela se transmet ?
 - Tutoriels NCBI
 - Papers de reference (Nature, Bioinformatics)
 
+### Pour les probabilites et statistiques
+- "Think Stats" et "Think Bayes" (Allen Downey)
+- Khan Academy : Probabilites
+- Seeing Theory : visualisations interactives
+- StatQuest (YouTube) : explications accessibles
+
 ---
 
 ## Changelog
+
+### Version 1.3 (16 novembre 2025)
+- Ajout de la Fiche 08 : Theoreme de Bayes
+- Applications en inference phylogenetique bayesienne
+- Reseaux bayesiens et modeles probabilistes
+- Comparaison approches bayesienne vs frequentiste
+- MCMC et methodes d'inference
+- Tests diagnostiques et interpretation
+- Mise a jour de la progression d'apprentissage
+- Ajout de logiciels bayesiens (BEAST, MrBayes, Stan)
 
 ### Version 1.2 (15 novembre 2025)
 - Ajout de la Fiche 07 : Code genetique et traduction
@@ -357,12 +442,13 @@ Fiche 05 (Mendel) → comment tout cela se transmet ?
 - Ajout de problemes Rosalind correspondants (PROT, ORF, SPLC)
 - Mise a jour de l'ordre suggere des problemes
 - Ajout mention section "Pour aller plus loin" dans toutes les fiches
-- Note : Fiche 06 existe deja dans le projet (a documenter)
+- Note : Fiche 06 existe deja dans le projet (probabilites genetiques)
 
 ### Version 1.1 (14 novembre 2025)
 - Ajout de la Fiche 05 : Genetique mendelienne et heredite
+- Ajout de la Fiche 06 : Probabilites en genetique (calculs avances)
 - Mise a jour de la progression d'apprentissage
-- Ajout de problemes Rosalind correspondants (IPRB, LIA)
+- Ajout de problemes Rosalind correspondants (IPRB, LIA, IEV)
 - Mise a jour des prochaines fiches a creer
 
 ### Version 1.0 (14 novembre 2025)
@@ -396,26 +482,31 @@ Fiche 05 (Mendel) → comment tout cela se transmet ?
 
 ---
 
-## Themes couverts par les 7 fiches
+## Themes couverts par les 8 fiches
 
 ### Biologie cellulaire et moleculaire
 - ✓ Structure cellulaire (Fiche 01)
 - ✓ Structure de l'ADN (Fiche 02)
 - ✓ Structure de l'ARN (Fiche 04)
-- ? Fiche 06 ([A definir])
 - ✓ Code genetique et traduction (Fiche 07)
 
 ### Genetique et evolution
 - ✓ Mutations (Fiche 03)
 - ✓ Heredite mendelienne (Fiche 05)
 
+### Mathematiques et probabilites
+- ✓ Probabilites genetiques (Fiche 06)
+- ✓ Theoreme de Bayes et inference (Fiche 08)
+
 ### Dogme central
 - ✓ ADN → ARN (Transcription, Fiche 04)
-- ✓ ARN → Proteine (Traduction, Fiche 06)
+- ✓ ARN → Proteine (Traduction, Fiche 07)
 
 ### Encore a couvrir
-- ☐ Structure des proteines (Fiche 08)
-- ☐ Replication de l'ADN (Fiche 09)
+- ☐ Structure des proteines (Fiche 09)
+- ☐ Replication de l'ADN (Fiche 10)
+- ☐ Alignement de sequences (Fiche 11)
+- ☐ HMM et modeles probabilistes (Fiche 14)
 
 ---
 
@@ -424,7 +515,7 @@ Fiche 05 (Mendel) → comment tout cela se transmet ?
 ```
         ADN (Fiche 02)
          |
-         | Replication (Fiche 09 - a venir)
+         | Replication (Fiche 10 - a venir)
          |
          v
         ADN
@@ -434,15 +525,10 @@ Fiche 05 (Mendel) → comment tout cela se transmet ?
          v
         ARN
          |
-         | [Fiche 06 - a definir]
-         |
-         v
-        [?]
-         |
          | Traduction (Fiche 07)
          |
          v
-      Proteine (Fiche 08 - a venir)
+      Proteine (Fiche 09 - a venir)
          |
          | Fonction cellulaire
          |
@@ -452,8 +538,47 @@ Fiche 05 (Mendel) → comment tout cela se transmet ?
          | Heredite
          |
          v
-    Transmission (Fiche 05)
+    Transmission (Fiche 05, 06)
+         |
+         | Inference
+         |
+         v
+    Modelisation (Fiche 08)
 ```
+
+---
+
+## Parcours d'apprentissage par objectif
+
+### Objectif : Resoudre problemes Rosalind basiques
+**Fiches essentielles** : 1, 2, 3, 4, 7
+**Temps estime** : 2-3 semaines
+**Problemes cibles** : DNA, RNA, REVC, HAMM, GC, PROT
+
+### Objectif : Comprendre genetique et heredite
+**Fiches essentielles** : 1, 2, 5, 6
+**Temps estime** : 2-3 semaines
+**Problemes cibles** : IPRB, LIA, IEV
+
+### Objectif : Bases pour phylogenie bayesienne
+**Fiches essentielles** : 2, 3, 8
+**Temps estime** : 3-4 semaines
+**Logiciels cibles** : BEAST, MrBayes
+
+### Objectif : Annotation de genomes
+**Fiches essentielles** : 2, 4, 7, 8
+**Temps estime** : 3-4 semaines
+**Logiciels cibles** : GeneMark, Glimmer, Prodigal
+
+### Objectif : Variant calling
+**Fiches essentielles** : 2, 3, 8
+**Temps estime** : 3-4 semaines
+**Logiciels cibles** : GATK, FreeBayes
+
+### Objectif : Base complete bio-informatique
+**Toutes les fiches** : 1-8
+**Temps estime** : 2-3 mois
+**Resultat** : Solide comprehension des fondamentaux
 
 ---
 
@@ -467,13 +592,14 @@ Tu as maintenant une base solide pour :
 - Apprehender les algorithmes de bio-informatique
 - Contribuer a des projets open source
 - Comprendre la genetique et l'heredite
+- Maitriser les bases de l'inference probabiliste
+- Utiliser des methodes bayesiennes modernes
 
 **Next steps** :
-1. Reviser ces 6 fiches regulierement
-2. Resoudre les problemes Rosalind correspondants (DNA, RNA, REVC, HAMM, PROT, ORF)
+1. Reviser ces 8 fiches regulierement
+2. Resoudre les problemes Rosalind correspondants
 3. Implementer les algorithmes en Python
-4. Contribuer a des projets comme rust-bio
+4. Explorer les logiciels bayesiens (BEAST, MrBayes)
+5. Contribuer a des projets comme rust-bio
 
-**Rappel important** : Pas de pression, pas de deadline. C'est un marathon, pas un sprint. Prends le temps de bien comprendre chaque concept avant de passer au suivant. La Fiche 07 complete maintenant le dogme central (ADN → ARN → Proteine), ce qui est une etape majeure dans ta comprehension de la biologie moleculaire !
-
-**Note** : Si tu peux partager le contenu de ta Fiche 06 existante, je pourrai mettre a jour cet index pour l'integrer correctement dans la progression pedagogique.
+**Rappel important** : Pas de pression, pas de deadline. C'est un marathon, pas un sprint. Prends le temps de bien comprendre chaque concept avant de passer au suivant. La Fiche 08 complete maintenant tes outils mathematiques pour aborder la bio-informatique moderne avec les methodes d'inference bayesienne !
