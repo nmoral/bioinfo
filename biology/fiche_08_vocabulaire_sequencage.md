@@ -112,15 +112,15 @@ signal lisible.
 
 **Comment ca marche (simplifie)** :
 ```
-Etape 1 : chauffer → les deux brins se separent
-Etape 2 : refroidir → les amorces s'hybrident
+Etape 1 : chauffer -> les deux brins se separent
+Etape 2 : refroidir -> les amorces s'hybrident
 Etape 3 : l'enzyme copie chaque brin
-Etape 4 : recommencer → les copies se dupliquent a leur tour
+Etape 4 : recommencer -> les copies se dupliquent a leur tour
 
-Cycle 1  : 1 fragment → 2 copies
-Cycle 2  : 2 copies   → 4 copies
-Cycle 10 : → environ 1000 copies
-Cycle 30 : → plus d'un milliard de copies
+Cycle 1  : 1 fragment -> 2 copies
+Cycle 2  : 2 copies   -> 4 copies
+Cycle 10 : -> environ 1000 copies
+Cycle 30 : -> plus d'un milliard de copies
 ```
 
 **Note importante** :
@@ -196,10 +196,10 @@ attribue un score de confiance.
 **Formule** : Q = -10 * log10(probabilite d'erreur)
 
 ```
-Q10  → 1 erreur sur 10      (10% d'erreur)
-Q20  → 1 erreur sur 100     (1% d'erreur)
-Q30  → 1 erreur sur 1000    (0.1% d'erreur)  <- standard Illumina
-Q40  → 1 erreur sur 10 000  (0.01% d'erreur)
+Q10  -> 1 erreur sur 10      (10% d'erreur)
+Q20  -> 1 erreur sur 100     (1% d'erreur)
+Q30  -> 1 erreur sur 1000    (0.1% d'erreur)  <- standard Illumina
+Q40  -> 1 erreur sur 10 000  (0.01% d'erreur)
 ```
 
 ---
@@ -208,8 +208,8 @@ Q40  → 1 erreur sur 10 000  (0.01% d'erreur)
 **Ce que c'est** : la conversion du signal brut du sequenceur en lettres A, C, G, T.
 
 **Chaque technologie a son propre signal brut** :
-- Illumina   → signal fluorescent (couleur de lumiere)
-- Nanopore   → signal electrique (variation de courant ionique)
+- Illumina   -> signal fluorescent (couleur de lumiere)
+- Nanopore   -> signal electrique (variation de courant ionique)
 
 Le basecalling transforme ce signal physique en sequence nucleotidique.
 C'est une etape algorithmique, souvent basee sur des modeles de deep learning
@@ -232,13 +232,14 @@ et leurs scores de qualite.
 **Structure d'un read en FASTQ** (4 lignes par read) :
 
 ```
-@identifiant_du_read
+@identifiant_du_read [description optionnelle libre]
 ATCGATCGATCGATCGATCG
 +
 IIIIIIIIHHHHGGGGFFFF
 ```
 
-Ligne 1 : @ + identifiant unique du read
+Ligne 1 : @ + identifiant unique du read + optionnellement une description
+           apres le premier espace (texte libre, ignore par la plupart des outils)
 Ligne 2 : la sequence nucleotidique (le read lui-meme)
 Ligne 3 : + (separateur, parfois repete l'identifiant)
 Ligne 4 : les scores de qualite encodes en ASCII, un caractere par base
@@ -247,6 +248,28 @@ Ligne 4 : les scores de qualite encodes en ASCII, un caractere par base
 Chaque caractere correspond a un score Phred.
 Le caractere 'I' = score 40, 'H' = 39, 'F' = 37, etc.
 (valeur ASCII du caractere - 33 = score Phred)
+
+**La description apres l'identifiant** :
+
+Tout ce qui suit le premier espace sur la ligne 1 est du texte libre.
+Les aligneurs (BWA, Minimap2) l'ignorent completement — ils ne lisent
+que l'identifiant. Cela permet aux outils du pipeline de faire voyager
+des metadonnees entre etapes sans casser la compatibilite.
+
+```
+Exemple Illumina (convention standardisee) :
+@A00123:42:HXXXXXX:1:1101:3456:7890 1:N:0:ATCGAATT
+ \___ identifiant ___/               \___ description ___/
+                                     (run info, barcode...)
+
+Exemple Kraken2 (classificateur) :
+@read_00042|kraken:taxid|9606
+(l'identifiant taxonomique encode directement)
+
+Exemple possible pour T2 :
+@read_00042 family=Lassavirus prob=0.87,Arenavirus prob=0.13
+(les probabilites voyagent jusqu'a l'aligneur)
+```
 
 ---
 
@@ -271,9 +294,72 @@ Couverture en position 1000 : 4x
 - 30x  : standard pour genome humain
 - 100x : pour detection de variants rares
 
+**Attention : "10x minimum" = une moyenne, pas un minimum par position**
+
+La couverture est une valeur moyenne sur l'ensemble du genome.
+Une couverture moyenne de 10x signifie que certaines positions ont 0x,
+d'autres 20x, et que la moyenne est 10x.
+
+```
+Couverture moyenne 10x sur un genome de 5 positions :
+
+Position 1 :  |||||||||||||||   15x
+Position 2 :  ||||||||||        10x
+Position 3 :  |||               3x
+Position 4 :  |||||||||||||     13x
+Position 5 :  |||||||           7x
+                                -----
+              Moyenne           9.6x ≈ 10x
+
+La position 3 a une couverture faible mais la moyenne reste acceptable.
+```
+
+**Quand est-ce que la couverture est calculee dans le pipeline ?**
+
+La couverture ne peut pas etre calculee par le classificateur.
+Elle necessite deux etapes prealables :
+
+```
+1. Classification  : "ce read appartient a la famille X"
+        |
+        v
+2. Binning FASTQ   : les reads de la famille X sont regroupes
+                     dans un fichier FASTQ dedie
+        |
+        v
+3. Alignement      : BWA ou Minimap2 colle chaque read sur le
+                     genome de reference de la famille X
+        |
+        v
+4. Couverture      : on peut maintenant compter combien de reads
+                     couvrent chaque position -> 10x, 30x, etc.
+```
+
+Connaitre la famille d'un read (classification) ne suffit pas.
+Il faut aussi savoir a quelle position exacte du genome il correspond
+(alignement) pour calculer la couverture.
+
+**En metagenomique** :
+
+La couverture est calculee separement pour chaque famille identifiee.
+Un echantillon avec 10 familles genere 10 calculs de couverture distincts.
+
+```
+Echantillon :
+  -> LASV             : 4.26% des reads -> couverture X sur genome LASV
+  -> bacterie humaine : 60%   des reads -> couverture Y sur genome bacterie
+  -> ADN hote         : 35%   des reads -> couverture Z sur genome humain
+```
+
 Dans l'article LASV : "4.26% des reads en moyenne etaient du LASV".
 = sur 1 million de reads, seulement 42 600 viennent du virus.
 Le reste vient de l'hote humain et des bacteries.
+
+**Ce que fait ton prototype (T2) dans ce pipeline** :
+
+Ton classificateur repond a "a quelle famille ?" -> etape 1 et 2.
+Il produit des fichiers FASTQ par famille (binning).
+La couverture est calculee en aval, par un outil externe (BWA, Minimap2).
 
 ---
 
@@ -343,7 +429,7 @@ ADN/ARN brut
         v
 Fragments (tailles variables)
         |
-        | Ajout d'adaptateurs → banque (library)
+        | Ajout d'adaptateurs -> banque (library)
         v
 Banque prete
         |
@@ -359,16 +445,23 @@ Fichiers FASTQ (reads + qualite)
         v
 Reads filtres
         |
-        +----------------+----------------+
-        |                                 |
-        | Alignement                      | Assemblage de novo
-        | (genome ref. connu)             | (pas de reference)
-        v                                 v
-Reads alignes                       Contigs / scaffolds
-        |                                 |
-        +----------------+----------------+
+        | Classification (T2 / Kraken2 / ...)
+        v
+Reads classes par famille
         |
-        | Analyse (classification taxonomique, variants, etc.)
+        | Binning : un FASTQ par famille identifiee
+        v
+FASTQ famille A   FASTQ famille B   FASTQ famille C ...
+        |
+        | Alignement (BWA / Minimap2) sur genome de reference de chaque famille
+        v
+Reads alignes
+        |
+        | Calcul de couverture
+        v
+Couverture X par famille
+        |
+        | Analyse (variants, resistances, phylogenie...)
         v
 Resultats biologiques
 ```
@@ -380,14 +473,15 @@ Resultats biologiques
 1. **Fragment** = morceau d'ADN coupe depuis le genome
 2. **Amorce** = brin synthetique court qui sert de point de depart a la copie
 3. **Hybridation** = collage spontane de deux brins complementaires
-4. **PCR** = amplification en chaine : 1 fragment → des milliards de copies
+4. **PCR** = amplification en chaine : 1 fragment -> des milliards de copies
 5. **Adaptateur** = etiquette ajoutee aux extremites des fragments pour le sequenceur
 6. **Banque** = l'ensemble des fragments prepares, prets a sequencer
 7. **Read** = la sequence brute produite pour un fragment
 8. **Basecalling** = conversion du signal physique en lettres ACGT
 9. **FASTQ** = format fichier : sequence + score de qualite par base
-10. **Couverture** = nombre de reads couvrant chaque position du genome
-11. **HPC** = compression des homopolymeres pour corriger les erreurs Nanopore
+10. **Couverture** = moyenne de reads couvrant chaque position du genome (calculee apres alignement)
+11. **Binning** = regroupement des reads par famille dans des FASTQ dedies
+12. **HPC** = compression des homopolymeres pour corriger les erreurs Nanopore
 
 ---
 
@@ -400,19 +494,25 @@ Resultats biologiques
 5. Dans l'article LASV, 4.26% des reads sont du virus. Si tu as 1 million
    de reads en tout, combien viennent du LASV ?
 6. Pourquoi le skip Boyer-Moore est inefficace pour les erreurs Nanopore ?
+7. Une couverture moyenne de 10x garantit-elle que toutes les positions
+   du genome sont couvertes a 10x ?
+8. Cite les 4 etapes necessaires avant de pouvoir calculer la couverture
+   en metagenomique.
 
 ---
 
 ## Mnemoniques
 
-**Pipeline** : "**F**amille **A**daptee **B**ien **S**equencee **C**lairement **A**nalysee"
-= Fragment → Adaptateur → Banque → Sequencage → Basecalling → Analyse
+**Pipeline** : "Fragment Adapte Bien Sequence Correctement Analyse"
+= Fragment -> Adaptateur -> Banque -> Sequencage -> Basecalling -> Classification -> Alignement
 
 **Erreurs par technologie** :
-- Illumina = **I**nsertion ? Non. **I**nfimes substitutions.
-- Nanopore  = **N**ombreuses insertions/deletions (homopolymeres)
+- Illumina = Infimes substitutions
+- Nanopore = Nombreuses insertions/deletions (homopolymeres)
 
-**Q30** = "**Q**ualite tres **B**onne" : 1 erreur sur 1000
+**Q30** = "Qualite tres Bonne" : 1 erreur sur 1000
+
+**Couverture** = metrique d'alignement, pas de classification
 
 ---
 
@@ -420,9 +520,10 @@ Resultats biologiques
 
 - Tes reads = fichiers FASTQ en entree de ton pipeline
 - Tes k-mers = extraits depuis la ligne 2 de chaque read FASTQ
+- Ta sortie = FASTQ bins par famille (+ probabilites dans l'en-tete)
 - Tes "erreurs" (caracteres exotiques) != erreurs Nanopore reelles
 - HPC = la vraie reponse au probleme que ton skip tentait de resoudre
-- La couverture = pourquoi tu ne peux pas ignorer les reads a faible signal
+- La couverture = calculee en aval par BWA/Minimap2, pas par ton outil
 
 ---
 
@@ -433,7 +534,6 @@ Resultats biologiques
 **Livres** :
 - "Biological Sequence Analysis" (Durbin et al.)
   - Chapitre 1 : introduction au sequencage
-  - Tu l'as deja dans ta bibliotheque
   
 - "Bioinformatics Algorithms" (Compeau & Pevzner)
   - Chapitres sur l'assemblage et l'alignement
@@ -451,25 +551,18 @@ Resultats biologiques
 **En francais** :
 - Planet-Vie (ENS) : "La revolution de la genomique"
   - https://planet-vie.ens.fr/thematiques/manipulations-en-laboratoire/la-revolution-de-la-genomique-les-nouvelles-methodes-de
-  - Premiere lecture recommandee
   
 - INSERM medecine/sciences : "Sequencage de l'ADN par nanopores"
   - https://www.medecinesciences.org/en/articles/medsci/full_html/2018/02/medsci20183402p161/medsci20183402p161.html
-  - Bonne explication du principe physique
 
-**En anglais (pour aller plus loin)** :
+**En anglais** :
 - StatQuest : "Illumina sequencing" (YouTube)
-  - Explications visuelles tres claires
-  
 - Oxford Nanopore : "How it works" (site officiel)
   - https://nanoporetech.com/how-it-works
-  - Explication officielle avec animations
 
 **Outils pour pratiquer** :
 - FastQC : outil de controle qualite de fichiers FASTQ
-  - Permet de voir concretement a quoi ressemble un vrai fichier
   - https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
-
 - Integrative Genomics Viewer (IGV)
   - Visualiser des reads alignes sur un genome de reference
   - https://igv.org/
@@ -483,9 +576,9 @@ Resultats biologiques
    sur les 100 premieres lignes.
 
 2. Calcule le score Phred a partir du code ASCII :
-   - Caractere 'I' (ASCII 73) → score = 73 - 33 = ?
-   - Caractere '!' (ASCII 33) → score = 33 - 33 = ?
-   - Caractere '~' (ASCII 126) → score = 126 - 33 = ?
+   - Caractere 'I' (ASCII 73) -> score = 73 - 33 = ?
+   - Caractere '!' (ASCII 33) -> score = 33 - 33 = ?
+   - Caractere '~' (ASCII 126) -> score = 126 - 33 = ?
 
 3. Simule une amplification PCR sur papier :
    - Depart : 1 fragment double brin
@@ -503,7 +596,7 @@ Resultats biologiques
 5. Implemente la compression HPC :
    - Input  : "AAATTTCCCGGG"
    - Output : "ATCG"
-   Verifie avec : "AATCGGGATTT" → ?
+   Verifie avec : "AATCGGGATTT" -> ?
 
 6. Calcule la couverture theorique :
    - Genome de 4 000 000 bases (E. coli)
